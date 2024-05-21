@@ -1,0 +1,16 @@
+{
+	"modmenu.descriptionTranslation.simple-autoswitch": "Automatycznie przełącz na najszybsze narzędzie podczas kopania.",
+
+	"category.simpleautoswitch": "Simple Autoswitch",
+	"key.simpleautoswitch.toggle": "Przełącz automatyczną zminaę",
+	"key.simpleautoswitch.menu": "Otrwórz ekran ustawień",
+	
+	"simpleautoswitch.menuscreen.enabled": "Włączony",
+	"simpleautoswitch.menuscreen.requiresAttackHeld": "Wymagaj wsiśniętego przycisku kopania",
+	"simpleautoswitch.menuscreen.returnToPreviousSlot": "Powróć do pierwotnego slotu",
+	"simpleautoswitch.menuscreen.sneakToggle": "Wyłącz podczas skradania się",
+	"simpleautoswitch.menuscreen.done": "Gotowe",
+
+	"simpleautoswitch.switchbutton.label.on": "wł.",
+	"simpleautoswitch.switchbutton.label.off": "wył."
+}

@@ -1,0 +1,14 @@
+{
+	"category.simpleautoswitch": "Simple Autoswitch",
+	"key.simpleautoswitch.toggle": "Toggle Autoswitch",
+	"key.simpleautoswitch.menu": "Open Settings Menu",
+	
+	"simpleautoswitch.menuscreen.enabled": "Enabled",
+	"simpleautoswitch.menuscreen.requiresAttackHeld": "Require Attack Button to be Held",
+	"simpleautoswitch.menuscreen.returnToPreviousSlot": "Return to Previous Slot",
+	"simpleautoswitch.menuscreen.sneakToggle": "Disable When Sneaking",
+	"simpleautoswitch.menuscreen.done": "Done",
+
+	"simpleautoswitch.switchbutton.label.on": "on",
+	"simpleautoswitch.switchbutton.label.off": "off"
+}

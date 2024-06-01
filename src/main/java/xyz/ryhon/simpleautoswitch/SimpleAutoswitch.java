@@ -69,8 +69,10 @@ public class SimpleAutoswitch implements ModInitializer {
 
 				boolean sw = shouldSwitch(client);
 
-				if (!wasPressed && sw)
+				if (!wasPressed && sw) {
+					tempDisabled = false;
 					previousSlot = client.player.getInventory().selectedSlot;
+				}
 
 				if (sw) {
 					switchToBestSlot(client);

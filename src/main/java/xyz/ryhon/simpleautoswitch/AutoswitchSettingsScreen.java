@@ -1,7 +1,8 @@
 package xyz.ryhon.simpleautoswitch;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.ButtonTextures;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextWidget;
@@ -116,12 +117,11 @@ public class AutoswitchSettingsScreen extends Screen {
 	}
 
 	public class SwitchButton extends ToggleButtonWidget {
-		private static final ButtonTextures TEXTURES = new ButtonTextures(new Identifier("widget/button"),
-				new Identifier("widget/button"), new Identifier("widget/button_highlighted"));
+		static final Identifier TEXTURE = new Identifier("textures/gui/sprites/widget/button.png");
+		static final Identifier TEXTURE_HIGHLIGHTED = new Identifier("textures/gui/sprites/widget/button_highlighted.png");
 
 		public SwitchButton(int x, int y, int width, int height, boolean toggled) {
 			super(x, y, width, height, toggled);
-			setTextures(TEXTURES);
 		}
 
 		@Override
@@ -135,7 +135,10 @@ public class AutoswitchSettingsScreen extends Screen {
 
 		@Override
 		public void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
-			super.renderButton(context, mouseX, mouseY, delta);
+			RenderSystem.disableDepthTest();
+			context.drawTexture(hovered ? TEXTURE_HIGHLIGHTED : TEXTURE, this.getX(), this.getY(), 0, 0,
+					this.width, this.height, this.width, this.height);
+			RenderSystem.enableDepthTest();
 			context.drawCenteredTextWithShadow(textRenderer,
 					Text.translatable("simpleautoswitch.switchbutton.label." + (toggled ? "on" : "off")),
 					getX() + (width / 2), getY() + (height / 2) - (textRenderer.fontHeight / 2),

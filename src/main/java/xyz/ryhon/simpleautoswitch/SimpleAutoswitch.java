@@ -10,6 +10,7 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -132,6 +133,8 @@ public class SimpleAutoswitch implements ModInitializer {
 
 			for (int i = 0; i < PlayerInventory.getHotbarSize(); i++) {
 				p.getInventory().selectedSlot = i;
+				p.getEquipmentChanges();
+
 				float delta = state.calcBlockBreakingDelta(p, p.getWorld(), blockHit.getBlockPos());
 				delta = Math.min(delta, 1f);
 				if (delta > maxDelta) {
@@ -140,6 +143,7 @@ public class SimpleAutoswitch implements ModInitializer {
 				}
 			}
 			p.getInventory().selectedSlot = currentSlot;
+			p.getEquipmentChanges();
 
 			if (oldSlot != currentSlot)
 				client.interactionManager.syncSelectedSlot();

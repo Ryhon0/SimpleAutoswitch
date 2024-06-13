@@ -1,3 +1,4 @@
 accessWidener v2 named
 
 accessible    method    net/minecraft/client/network/ClientPlayerInteractionManager    syncSelectedSlot    ()V
+accessible    method    net/minecraft/entity/LivingEntity    getEquipmentChanges    ()Ljava/util/Map;

@@ -18,7 +18,6 @@ public class AutoswitchSettingsScreen extends Screen {
 	}
 
 	SwitchButton enabledButton;
-	SwitchButton requiresAttackHeldButton;
 	SwitchButton returnToPreviousSlotButton;
 	SwitchButton sneakToggleButton;
 	ButtonWidget doneButton;
@@ -47,26 +46,9 @@ public class AutoswitchSettingsScreen extends Screen {
 				enabledButton.getY() + (buttonHeight / 2) - (textRenderer.fontHeight / 2));
 		addDrawableChild(t);
 
-		requiresAttackHeldButton = new SwitchButton(
+		returnToPreviousSlotButton = new SwitchButton(
 				enabledButton.getX(), enabledButton.getY() + enabledButton.getHeight(),
 				enabledButton.getWidth(), enabledButton.getHeight(),
-				SimpleAutoswitch.requiresAttackHeld) {
-			@Override
-			public void setToggled(boolean toggled) {
-				super.setToggled(toggled);
-				SimpleAutoswitch.requiresAttackHeld = toggled;
-			}
-		};
-		addDrawableChild(requiresAttackHeldButton);
-		addSelectableChild(requiresAttackHeldButton);
-		t = new TextWidget(Text.translatable("simpleautoswitch.menuscreen.requiresAttackHeld"), textRenderer);
-		t.setPosition((width / 2) - (panelWidth / 2),
-				requiresAttackHeldButton.getY() + (buttonHeight / 2) - (textRenderer.fontHeight / 2));
-		addDrawableChild(t);
-
-		returnToPreviousSlotButton = new SwitchButton(
-				requiresAttackHeldButton.getX(), requiresAttackHeldButton.getY() + requiresAttackHeldButton.getHeight(),
-				requiresAttackHeldButton.getWidth(), requiresAttackHeldButton.getHeight(),
 				SimpleAutoswitch.returnToPreviousSlot) {
 			@Override
 			public void setToggled(boolean toggled) {

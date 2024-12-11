@@ -10,7 +10,6 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -30,7 +29,6 @@ public class SimpleAutoswitch implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("simple-autoswitch");
 
 	static public boolean enabled = true;
-	static public boolean requiresAttackHeld = true;
 	static public boolean returnToPreviousSlot = true;
 	static public boolean sneakToggle = true;
 
@@ -109,10 +107,7 @@ public class SimpleAutoswitch implements ModInitializer {
 		if (sneakToggle && client.player.isSneaking())
 			return false;
 
-		if (requiresAttackHeld)
-			return client.options.attackKey.isPressed();
-		else
-			return true;
+		return client.options.attackKey.isPressed();
 	}
 
 	void switchToBestSlot(MinecraftClient client) {
@@ -164,8 +159,6 @@ public class SimpleAutoswitch implements ModInitializer {
 
 			if (jo.has("enabled"))
 				enabled = jo.get("enabled").getAsBoolean();
-			if (jo.has("requiresAttackHeld"))
-				requiresAttackHeld = jo.get("requiresAttackHeld").getAsBoolean();
 			if (jo.has("returnToPreviousSlot"))
 				returnToPreviousSlot = jo.get("returnToPreviousSlot").getAsBoolean();
 			if (jo.has("sneakToggle"))
@@ -180,7 +173,6 @@ public class SimpleAutoswitch implements ModInitializer {
 		JsonObject jo = new JsonObject();
 
 		jo.add("enabled", new JsonPrimitive(enabled));
-		jo.add("requiresAttackHeld", new JsonPrimitive(requiresAttackHeld));
 		jo.add("returnToPreviousSlot", new JsonPrimitive(returnToPreviousSlot));
 		jo.add("sneakToggle", new JsonPrimitive(sneakToggle));
 

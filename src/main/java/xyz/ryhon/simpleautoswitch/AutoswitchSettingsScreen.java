@@ -117,7 +117,7 @@ public class AutoswitchSettingsScreen extends Screen {
 
 	public class SwitchButton extends ToggleButtonWidget {
 		private static final ButtonTextures TEXTURES = new ButtonTextures(Identifier.of("widget/button"),
-			Identifier.of("widget/button"), Identifier.of("widget/button_highlighted"));
+				Identifier.of("widget/button"), Identifier.of("widget/button_highlighted"));
 
 		public SwitchButton(int x, int y, int width, int height, boolean toggled) {
 			super(x, y, width, height, toggled);
@@ -125,8 +125,8 @@ public class AutoswitchSettingsScreen extends Screen {
 		}
 
 		@Override
-		protected boolean clicked(double mouseX, double mouseY) {
-			if (super.clicked(mouseX, mouseY)) {
+		public boolean mouseClicked(double mouseX, double mouseY, int button) {
+			if (super.mouseClicked(mouseX, mouseY, button)) {
 				setToggled(!toggled);
 				return true;
 			}

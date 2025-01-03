@@ -13,6 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class MouseMixin {
 	@Inject(at = @At("TAIL"), method = "onMouseScroll")
 	private void scrollInHotbar(long window, double horizontal, double vertical, CallbackInfo info) {
+		if(((Mouse)(Object)this).client == null || ((Mouse)(Object)this).client.player == null) return;
+
 		PlayerInventory lv = ((Mouse)(Object)this).client.player.getInventory();
 
 		if(lv.selectedSlot != SimpleAutoswitch.previousSlot)

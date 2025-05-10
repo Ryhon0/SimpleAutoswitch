@@ -31,6 +31,7 @@ public class SimpleAutoswitch implements ModInitializer {
 	static public boolean enabled = true;
 	static public boolean returnToPreviousSlot = true;
 	static public boolean sneakToggle = true;
+	static public boolean creativeDisable = true;
 
 	boolean wasPressed = false;
 	static public boolean tempDisabled = false;
@@ -101,6 +102,9 @@ public class SimpleAutoswitch implements ModInitializer {
 		if (client.player == null)
 			return false;
 
+		if(creativeDisable && client.player.isInCreativeMode())
+			return false;
+
 		if (!enabled)
 			return false;
 
@@ -163,6 +167,8 @@ public class SimpleAutoswitch implements ModInitializer {
 				returnToPreviousSlot = jo.get("returnToPreviousSlot").getAsBoolean();
 			if (jo.has("sneakToggle"))
 				sneakToggle = jo.get("sneakToggle").getAsBoolean();
+			if (jo.has("creativeDisable"))
+				creativeDisable = jo.get("creativeDisable").getAsBoolean();
 
 		} catch (Exception e) {
 			LOGGER.error("Failed to load config", e);
@@ -175,6 +181,7 @@ public class SimpleAutoswitch implements ModInitializer {
 		jo.add("enabled", new JsonPrimitive(enabled));
 		jo.add("returnToPreviousSlot", new JsonPrimitive(returnToPreviousSlot));
 		jo.add("sneakToggle", new JsonPrimitive(sneakToggle));
+		jo.add("sneakToggle", new JsonPrimitive(creativeDisable));
 
 		try {
 			Files.createDirectories(configDir);

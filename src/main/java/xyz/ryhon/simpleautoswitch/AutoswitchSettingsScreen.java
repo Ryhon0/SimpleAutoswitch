@@ -20,6 +20,7 @@ public class AutoswitchSettingsScreen extends Screen {
 	SwitchButton enabledButton;
 	SwitchButton returnToPreviousSlotButton;
 	SwitchButton sneakToggleButton;
+	SwitchButton creativeDisableToggleButton;
 	ButtonWidget doneButton;
 
 	@Override
@@ -81,11 +82,29 @@ public class AutoswitchSettingsScreen extends Screen {
 				sneakToggleButton.getY() + (buttonHeight / 2) - (textRenderer.fontHeight / 2));
 		addDrawableChild(t);
 
+		creativeDisableToggleButton = new SwitchButton(
+				sneakToggleButton.getX(),
+				sneakToggleButton.getY() + sneakToggleButton.getHeight(),
+				sneakToggleButton.getWidth(), sneakToggleButton.getHeight(),
+				SimpleAutoswitch.creativeDisable) {
+			@Override
+			public void setToggled(boolean toggled) {
+				super.setToggled(toggled);
+				SimpleAutoswitch.creativeDisable = toggled;
+			}
+		};
+		addDrawableChild(creativeDisableToggleButton);
+		addSelectableChild(creativeDisableToggleButton);
+		t = new TextWidget(Text.translatable("simpleautoswitch.menuscreen.creativeDisable"), textRenderer);
+		t.setPosition((width / 2) - (panelWidth / 2),
+				creativeDisableToggleButton.getY() + (buttonHeight / 2) - (textRenderer.fontHeight / 2));
+		addDrawableChild(t);
+
 		doneButton = ButtonWidget.builder(Text.translatable("simpleautoswitch.menuscreen.done"), (ButtonWidget b) -> {
 			close();
 		})
 				.size(96, 24)
-				.position((width / 2) - (96 / 2), sneakToggleButton.getY() + sneakToggleButton.getHeight() + 8)
+				.position((width / 2) - (96 / 2), creativeDisableToggleButton.getY() + creativeDisableToggleButton.getHeight() + 8)
 				.build();
 		addDrawableChild(doneButton);
 		addSelectableChild(doneButton);

@@ -140,7 +140,7 @@ public class AutoswitchSettingsScreen extends Screen {
 			context.drawCenteredTextWithShadow(textRenderer,
 					Text.translatable("simpleautoswitch.switchbutton.label." + (toggled ? "on" : "off")),
 					getX() + (width / 2), getY() + (height / 2) - (textRenderer.fontHeight / 2),
-					toggled ? 0x00ff00 : 0xff0000);
+					toggled ? 0xff00ff00 : 0xffff0000);
 		}
 	}
 }

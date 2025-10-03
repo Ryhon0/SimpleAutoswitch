@@ -8,9 +8,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.option.KeyBinding.Category;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 
@@ -45,7 +47,7 @@ public class SimpleAutoswitch implements ModInitializer {
 		{
 			loadConfig();
 
-			String bindCategory = "category.simpleautoswitch";
+			Category bindCategory = Category.create(Identifier.of("simpleautoswitch", "simpleautoswitch"));
 			KeyBinding toggleBind = new KeyBinding("key.simpleautoswitch.toggle", InputUtil.Type.KEYSYM,
 					GLFW.GLFW_KEY_UNKNOWN, bindCategory);
 			KeyBindingHelper.registerKeyBinding(toggleBind);
@@ -128,13 +130,13 @@ public class SimpleAutoswitch implements ModInitializer {
 
 			int oldSlot = p.getInventory().selectedSlot;
 			int currentSlot = p.getInventory().selectedSlot;
-			float maxDelta = state.calcBlockBreakingDelta(p, p.getWorld(), blockHit.getBlockPos());
+			float maxDelta = state.calcBlockBreakingDelta(p, p.getEntityWorld(), blockHit.getBlockPos());
 
 			for (int i = 0; i < PlayerInventory.getHotbarSize(); i++) {
 				p.getInventory().selectedSlot = i;
 				p.getEquipmentChanges();
 
-				float delta = state.calcBlockBreakingDelta(p, p.getWorld(), blockHit.getBlockPos());
+				float delta = state.calcBlockBreakingDelta(p, p.getEntityWorld(), blockHit.getBlockPos());
 				delta = Math.min(delta, 1f);
 				if (delta > maxDelta) {
 					maxDelta = delta;

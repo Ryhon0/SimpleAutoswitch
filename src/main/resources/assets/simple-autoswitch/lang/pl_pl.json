@@ -1,7 +1,7 @@
 {
 	"modmenu.descriptionTranslation.simple-autoswitch": "Automatycznie przełącz na najszybsze narzędzie podczas kopania.",
 
-	"category.simpleautoswitch": "Simple Autoswitch",
+	"key.category.simpleautoswitch.simpleautoswitch": "Simple Autoswitch",
 	"key.simpleautoswitch.toggle": "Przełącz automatyczną zminaę",
 	"key.simpleautoswitch.menu": "Otrwórz ekran ustawień",
 	

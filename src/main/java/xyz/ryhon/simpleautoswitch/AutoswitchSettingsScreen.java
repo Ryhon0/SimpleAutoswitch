@@ -1,5 +1,6 @@
 package xyz.ryhon.simpleautoswitch;
 
+import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ButtonTextures;
 import net.minecraft.client.gui.screen.Screen;
@@ -126,8 +127,8 @@ public class AutoswitchSettingsScreen extends Screen {
 		}
 
 		@Override
-		public boolean mouseClicked(double mouseX, double mouseY, int button) {
-			if (super.mouseClicked(mouseX, mouseY, button)) {
+		public boolean mouseClicked(Click click, boolean doubled) {
+			if (super.mouseClicked(click, doubled)) {
 				setToggled(!toggled);
 				return true;
 			}
